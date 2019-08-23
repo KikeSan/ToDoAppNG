@@ -1,0 +1,38 @@
+<div class="columns is-mobile is-centered is-vcentered">
+  <div class="column is-half fondoBlanco">
+    <div class="bd-notification is-primary">
+      <h1 class="is-centered subtitle is-2">
+        <fa-icon icon="id-badge"></fa-icon> Login
+        <!-- <fa-icon icon="userFriends"></fa-icon> Login -->
+      </h1>
+      <form #formulario="ngForm" (ngSubmit)="registrar(formulario)">
+        <div class="field">
+          <p class="control has-icons-left has-icons-right">
+            <input class="input is-medium form-control" type="email" placeholder="Ingrese email" ngModel name="correo" required email #correo="ngModel">
+            <span class="icon is-medium is-left">
+              <fa-icon icon="envelope" size="md"></fa-icon>
+            </span>
+          </p>
+          <span *ngIf="correo.invalid && correo.touched && correo.errors.required">El correo es obligatorio</span>
+          <span *ngIf="correo.invalid && correo.touched && correo.errors.email">Formato inválido</span>
+        </div>
+        <div class="field">
+          <p class="control has-icons-left has-icons-right">
+            <input class="input is-medium form-control" type="password" placeholder="Contraseña" ngModel name="password" required #password="ngModel">
+            <span class="icon is-small is-left">
+              <fa-icon icon="lock"></fa-icon>
+            </span>
+          </p>
+          <span *ngIf="password.invalid && password.touched ">La contraseña es obligatoria</span>
+        </div>
+        
+        <button class="button is-link is-danger" [disabled]="formulario.invalid">
+          <span>INGRESAR</span>
+          <span class="icon">
+            <fa-icon icon="angle-right"></fa-icon>
+          </span>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+  background-color: #1976d2;
+  padding: 0;
+  margin: 0;
+}
+body:after{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: .3;
+  background: url(https://angular.io/assets/images/logos/angular/angular_whiteTransparent_withMargin.png) top 0 left 0/320px auto,
+  url(https://angular.io/assets/images/logos/angular/angular_whiteTransparent_withMargin.png) top 80px left 160px/320px auto;
+}
+
+.btn-primary{
+	background-color: #dd0031!important;
+	border: 0!important;
+}
