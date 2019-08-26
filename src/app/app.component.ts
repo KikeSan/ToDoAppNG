@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ToDoAppNG';
+  logueado: boolean = false
+  validar(valor) {
+    this.logueado = valor
+  }
 }

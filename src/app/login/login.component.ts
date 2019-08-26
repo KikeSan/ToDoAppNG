@@ -13,5 +13,18 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  loguearse(){
+    this.onLogged.emit(true)
+  }
+  registrar(){
+    if(this.f.valid){
+      console.log(this.f.value);
+      console.log(this.f.form.getRawValue());
+      console.log('Valido');
+      this.f.form.reset()
+      this.loguearse()
+    }else{
+      console.log('InValido');
+    }
+  }
 }

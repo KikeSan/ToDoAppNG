@@ -1,0 +1,12 @@
+<!-- <a class="panel-block">
+  <span class="panel-icon">
+    <i class="fas fa-book" aria-hidden="true"></i>
+  </span>
+  Prueba
+</a> -->
+
+<a *ngFor="let tarea of listaTareas" class="panel-block">
+  <span class="icon is-medium is-left">
+    <fa-icon icon="thumbtack" size="md"></fa-icon>
+  </span> {{tarea.name}}
+</a>

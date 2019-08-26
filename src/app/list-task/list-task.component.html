@@ -1,0 +1,64 @@
+<div class="column is-5">
+  <nav class="panel">
+    <p class="panel-heading">
+      To Do List
+    </p>
+    <div class="panel-block">
+      <p class="control has-icons-left">
+        <input class="input is-small" type="text" placeholder="search">
+        <!-- <span class="icon is-small is-left">
+          <i class="fas fa-search" aria-hidden="true"></i>
+        </span> -->
+        <fa-icon icon="search" size="md" class="icon is-small is-left"></fa-icon>
+      </p>
+    </div>
+    <p class="panel-tabs">
+      <a routerLink="/all" routerLinkActive="is-active">all</a>
+      <a routerLink="/todo"routerLinkActive="is-active">To do</a>
+      <a routerLink="/doing"routerLinkActive="is-active">Doing</a>
+      <a routerLink="/complete"routerLinkActive="is-active">Complete</a>
+    </p>
+    <router-outlet></router-outlet>
+    <!-- <a class="panel-block is-active">
+      <span class="panel-icon">
+        <i class="fas fa-book" aria-hidden="true"></i>
+      </span>
+      bulma
+    </a>
+    <a class="panel-block">
+      <span class="panel-icon">
+        <i class="fas fa-book" aria-hidden="true"></i>
+      </span>
+      marksheet
+    </a>
+    <a class="panel-block">
+      <span class="panel-icon">
+        <i class="fas fa-book" aria-hidden="true"></i>
+      </span>
+      minireset.css
+    </a>
+    <a class="panel-block">
+      <span class="panel-icon">
+        <i class="fas fa-book" aria-hidden="true"></i>
+      </span>
+      jgthms.github.io
+    </a>
+    <a class="panel-block">
+      <span class="panel-icon">
+        <i class="fas fa-code-branch" aria-hidden="true"></i>
+      </span>
+      daniellowtw/infboard
+    </a>
+    <a class="panel-block">
+      <span class="panel-icon">
+        <i class="fas fa-code-branch" aria-hidden="true"></i>
+      </span>
+      mojs
+    </a> -->
+    <div class="panel-block">
+      <button class="button is-link is-outlined is-fullwidth">
+        Eliminar completados
+      </button>
+    </div>
+  </nav>
+</div>  

@@ -1,1 +1,5 @@
 <app-login *ngIf="!logueado" (onLogged)="validar($event)"></app-login>
+
+<app-header *ngIf="logueado"></app-header>
+
+<app-list-task *ngIf="logueado" class="columns is-mobile is-centered"></app-list-task>
