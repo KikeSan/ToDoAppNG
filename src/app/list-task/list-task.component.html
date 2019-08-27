@@ -1,16 +1,13 @@
+
 <div class="column is-5">
   <nav class="panel">
     <p class="panel-heading">
       To Do List
     </p>
     <div class="panel-block">
-      <p class="control has-icons-left">
-        <input class="input is-small" type="text" placeholder="search">
-        <!-- <span class="icon is-small is-left">
-          <i class="fas fa-search" aria-hidden="true"></i>
-        </span> -->
-        <fa-icon icon="search" size="md" class="icon is-small is-left"></fa-icon>
-      </p>
+      <a class="button is-link is-small" (click)="abrirModal('nuevaTareaModal')">
+        <fa-icon icon="plus-circle" size="md" class="icon is-small is-left"></fa-icon> <span>Crear Tarea</span>
+      </a>
     </div>
     <p class="panel-tabs">
       <a routerLink="/all" routerLinkActive="is-active">all</a>
@@ -62,3 +59,17 @@
     </div>
   </nav>
 </div>  
+
+<!-- <div class="modal" id="nuevaTareaModal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <form [formGroup]="group" (ngSubmit)="crearTask()">
+        <p class="control has-icons-left">
+          <input class="input is-small" type="text" placeholder="Ingresar tarea nueva" formControlName="nuevatarea">
+          <fa-icon icon="plus-circle" size="md" class="icon is-small is-left"></fa-icon>
+        </p>
+        <button class="button is-link is-small" >Crear Tarea</button>
+      </form>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div> -->

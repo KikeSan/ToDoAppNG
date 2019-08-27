@@ -15,12 +15,13 @@ export class LoginComponent implements OnInit {
   }
   loguearse(){
     this.onLogged.emit(true)
+    localStorage.setItem('inSession','true')
   }
   registrar(){
     if(this.f.valid){
-      console.log(this.f.value);
-      console.log(this.f.form.getRawValue());
-      console.log('Valido');
+      console.log(this.f.value)
+      console.log(this.f.form.getRawValue())
+      console.log('Valido')
       this.f.form.reset()
       this.loguearse()
     }else{

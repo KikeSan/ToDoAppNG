@@ -8,7 +8,13 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'ToDoAppNG';
   logueado: boolean = false
+  ngOnInit(): void {
+    if(localStorage.getItem('inSession')){
+      this.logueado = true
+    }
+  }
   validar(valor) {
     this.logueado = valor
   }
+
 }
