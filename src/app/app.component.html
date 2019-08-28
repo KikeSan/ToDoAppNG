@@ -1,6 +1,8 @@
 <app-login *ngIf="!logueado" (onLogged)="validar($event)"></app-login>
 
-<app-header *ngIf="logueado"></app-header>
+<router-outlet></router-outlet>
+
+<!-- <app-header *ngIf="logueado"></app-header>
 
 <app-list-task *ngIf="logueado" class="columns is-mobile is-centered"></app-list-task>
 
@@ -14,4 +16,4 @@
           </div>
     </div>
     <button class="modal-close is-large" aria-label="close"></button>
-  </div>
+  </div> -->

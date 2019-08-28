@@ -23,7 +23,7 @@ export class TasksComponent implements OnInit {
       
       this.listar(data.params)
     }) */
-    this.listar(window.location.pathname.replace('/',''))
+    this.listar(window.location.pathname.replace('/tareas/',''))
   }
 
   listar(estado){

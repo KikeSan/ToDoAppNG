@@ -1,3 +1,14 @@
 .panel-block{
   background: #fff;
+  .column{
+    padding: 0;
+    .titulo{
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .detalle{
+      color: #999;
+      font-size: 11px;
+    }
+  }
 }

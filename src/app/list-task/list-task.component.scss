@@ -6,10 +6,25 @@
   margin-top: 60px;
 }
 
-.button.is-small{
-  margin-left: 10px;
-}
+
 
 form{
-  display: flex;
+  //display: flex;
+  padding: 15px;
+}
+.captionApp{
+  font-size: 14px;
+  color: #999;
+}
+.modal-content{
+  background: #fff;
+  border-radius: 5px;
+  max-width: 450px;
+  
+}
+.panel-tabs{
+  border-bottom: none;
+}
+.panel-block.pfooter{
+  border-radius: 0 0 5px 5px;
 }

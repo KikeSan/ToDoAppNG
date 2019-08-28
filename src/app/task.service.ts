@@ -43,4 +43,8 @@ export class TaskService {
     return Object.assign([],returnArray)
     //return Object.assign([],this.tareas)
   }
+
+  agregarTarea(task){
+    this.tareas.push(task)
+  }
 }

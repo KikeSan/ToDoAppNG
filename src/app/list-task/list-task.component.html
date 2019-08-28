@@ -1,75 +1,89 @@
-
-<div class="column is-5">
-  <nav class="panel">
-    <p class="panel-heading">
-      To Do List
-    </p>
-    <div class="panel-block">
-      <a class="button is-link is-small" (click)="abrirModal('nuevaTareaModal')">
-        <fa-icon icon="plus-circle" size="md" class="icon is-small is-left"></fa-icon> <span>Crear Tarea</span>
-      </a>
-    </div>
-    <p class="panel-tabs">
-      <a routerLink="/all" routerLinkActive="is-active">all</a>
-      <a routerLink="/todo"routerLinkActive="is-active">To do</a>
-      <a routerLink="/doing"routerLinkActive="is-active">Doing</a>
-      <a routerLink="/complete"routerLinkActive="is-active">Complete</a>
-    </p>
-    <router-outlet></router-outlet>
-    <!-- <a class="panel-block is-active">
-      <span class="panel-icon">
-        <i class="fas fa-book" aria-hidden="true"></i>
-      </span>
-      bulma
-    </a>
-    <a class="panel-block">
-      <span class="panel-icon">
-        <i class="fas fa-book" aria-hidden="true"></i>
-      </span>
-      marksheet
-    </a>
-    <a class="panel-block">
-      <span class="panel-icon">
-        <i class="fas fa-book" aria-hidden="true"></i>
-      </span>
-      minireset.css
-    </a>
-    <a class="panel-block">
-      <span class="panel-icon">
-        <i class="fas fa-book" aria-hidden="true"></i>
-      </span>
-      jgthms.github.io
-    </a>
-    <a class="panel-block">
-      <span class="panel-icon">
-        <i class="fas fa-code-branch" aria-hidden="true"></i>
-      </span>
-      daniellowtw/infboard
-    </a>
-    <a class="panel-block">
-      <span class="panel-icon">
-        <i class="fas fa-code-branch" aria-hidden="true"></i>
-      </span>
-      mojs
-    </a> -->
-    <div class="panel-block">
-      <button class="button is-link is-outlined is-fullwidth">
-        Eliminar completados
-      </button>
-    </div>
-  </nav>
-</div>  
-
-<!-- <div class="modal" id="nuevaTareaModal">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-      <form [formGroup]="group" (ngSubmit)="crearTask()">
-        <p class="control has-icons-left">
-          <input class="input is-small" type="text" placeholder="Ingresar tarea nueva" formControlName="nuevatarea">
+<div class="columns is-centered">
+  <div class="column is-5">
+    <nav class="panel">
+      <p class="panel-heading">
+        To Do List
+      </p>
+      <div class="panel-block">
+        <p class="captionApp">Gestiona tus tareas diarias de una forma simple y eficiente</p>
+        <!-- <a
+          class="button is-link is-small"
+          (click)="abrirModal('nuevaTareaModal')"
+        >
+          <fa-icon
+            icon="plus-circle"
+            size="md"
+            class="icon is-small is-left"
+          ></fa-icon>
+          <span>Crear Tarea</span>
+        </a> -->
+      </div>
+      <p class="panel-tabs">
+        <a routerLink="/tareas/all" routerLinkActive="is-active">all</a>
+        <a routerLink="/tareas/todo" routerLinkActive="is-active">To do</a>
+        <a routerLink="/tareas/doing" routerLinkActive="is-active">Doing</a>
+        <a routerLink="/tareas/complete" routerLinkActive="is-active"
+          >Complete</a
+        >
+      </p>
+      <router-outlet></router-outlet>
+      
+      <div class="panel-block pfooter">
+        <a class="button is-link is-fullwidth" (click)="abrirModal('nuevaTareaModal')">
           <fa-icon icon="plus-circle" size="md" class="icon is-small is-left"></fa-icon>
+          <span>Crear Tarea</span>
+        </a>
+        <!-- <button class="button is-link is-outlined is-fullwidth">
+          Eliminar completados
+        </button> -->
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<div class="modal" id="nuevaTareaModal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <form [formGroup]="group" (ngSubmit)="crearTask()">
+      <h1 class="title is-4">Crear tarea</h1>
+      <button class="modal-close is-large" aria-label="close" (click)="cerrarModal('nuevaTareaModal')"></button>
+      <div class="field">
+        <label class="label">Titulo</label>
+        <p class="control has-icons-left">
+          <input
+            class="input is-small"
+            type="text"
+            placeholder="Ingresar tarea nueva"
+            formControlName="titulo"
+          />
+          <fa-icon
+            icon="plus-circle"
+            size="md"
+            class="icon is-small is-left"
+          ></fa-icon>
         </p>
-        <button class="button is-link is-small" >Crear Tarea</button>
-      </form>
-    </div>
-    <button class="modal-close is-large" aria-label="close"></button>
-  </div> -->
+      </div>
+      <div class="field">
+        <label class="label">Descripción</label>
+        <p class="control has-icons-left">
+          <input
+            class="input is-small"
+            type="text"
+            placeholder="Ingresar descripción"
+            formControlName="descripcion"
+          />
+          <fa-icon
+            icon="plus-circle"
+            size="md"
+            class="icon is-small is-left"
+          ></fa-icon>
+        </p>
+      </div>
+      <div class="field">
+        <button class="button is-link is-small">Crear Tarea</button>
+      </div>
+    </form>
+  </div>
+  
+</div>

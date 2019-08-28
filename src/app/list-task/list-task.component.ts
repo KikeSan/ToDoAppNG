@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { TaskService } from '../task.service';
 import { ITask } from '../i-task';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -10,13 +10,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./list-task.component.scss']
 })
 export class ListTaskComponent implements OnInit {
-  /* listaTareas:ITask[]
-  Tareas:TaskService */
-  group:FormGroup
+  /* listaTareas:ITask[]*/
+  Tareas: TaskService;
+  group: FormGroup;
 
-  constructor(task:TaskService, private activatedRouter:ActivatedRoute) {
-    //this.Tareas = task
-   }
+  constructor(task: TaskService, private activatedRouter: ActivatedRoute) {
+    this.Tareas = task;
+  }
 
   ngOnInit() {
     //this.listar()
@@ -26,21 +26,33 @@ export class ListTaskComponent implements OnInit {
       this.listar(data.params.state)
     }) */
     this.group = new FormGroup({
-      nuevatarea:new FormControl(null,Validators.required)
-    })
+      titulo: new FormControl(null, Validators.required),
+      descripcion: new FormControl(null, Validators.required)
+    });
   }
 
   /* listar(estado){
     this.listaTareas = this.Tareas.mostrarTareas(estado)
   } */
 
-  abrirModal(opc){
-    let element = document.getElementById(opc)
-    element.className = 'is-active'
+  abrirModal(opc) {
+    let element = document.getElementById(opc);
+    element.classList.add('modal', 'is-active');
   }
-  crearTask(){
-    console.log('Vamos a crear la tarea: ',this.group.value.nuevatarea);
-    
+  cerrarModal(opc) {
+    let element = document.getElementById(opc);
+    element.classList.remove('is-active');
   }
-
+  crearTask() {
+    console.log('Vamos a crear la tarea: ', {
+      name: this.group.value.titulo,
+      description: this.group.value.descripcion
+    });
+    this.Tareas.agregarTarea({
+      id: 34567,
+      name: this.group.value.titulo,
+      description: this.group.value.descripcion,
+      status: 'todo'
+    });
+  }
 }

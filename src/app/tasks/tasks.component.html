@@ -5,8 +5,26 @@
   Prueba
 </a> -->
 
-<a *ngFor="let tarea of listaTareas" class="panel-block">
-  <span class="icon is-medium is-left">
-    <fa-icon icon="thumbtack" size="md"></fa-icon>
-  </span> {{tarea.name}}
-</a>
+<div *ngFor="let tarea of listaTareas" class="panel-block">
+  <div class="column is-1">
+    <span class="icon is-medium is-left">
+      <fa-icon icon="thumbtack" size="md"></fa-icon>
+    </span> 
+  </div>
+  <div class="column is-9">
+    <p class="titulo">{{tarea.name}}</p>
+    <p class="detalle">{{tarea.description}}</p>
+  </div>
+  <div class="column is-2">
+    <a href="">
+      <span class="icon is-medium is-left">
+        <fa-icon icon="edit" size="md"></fa-icon>
+      </span>
+    </a>
+    <a href="">
+      <span class="icon is-medium is-left">
+        <fa-icon icon="trash-alt" size="md"></fa-icon>
+      </span>
+    </a>
+  </div>
+</div>

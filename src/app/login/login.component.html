@@ -26,7 +26,7 @@
           <span *ngIf="password.invalid && password.touched ">La contraseña es obligatoria</span>
         </div>
         
-        <button class="button is-link is-danger" [disabled]="formulario.invalid">
+        <button class="button is-link is-danger" [disabled]="formulario.invalid" routerLink="/tareas/all">
           <span>INGRESAR</span>
           <span class="icon">
             <fa-icon icon="angle-right"></fa-icon>
