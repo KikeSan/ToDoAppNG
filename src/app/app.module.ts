@@ -20,7 +20,8 @@ const rutas:Routes = [
     {path:'todo',component: TasksComponent},
     {path:'doing',component: TasksComponent},
     {path:'complete',component: TasksComponent}
-  ]}
+  ]},
+  { path: '**', redirectTo: 'tareas/all' },
   
 ]
 

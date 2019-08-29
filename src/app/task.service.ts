@@ -16,7 +16,9 @@ export class TaskService {
     let returnArray
 
     switch (opc) {
-      
+      case '/':
+        return this.tareas;
+        break;
       case 'all':
           return this.tareas;
         break;

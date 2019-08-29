@@ -1,14 +1,37 @@
-.panel-block{
+@import '../scss/mixins';
+
+.panel-block {
   background: #fff;
-  .column{
+  .column {
     padding: 0;
-    .titulo{
+    .titulo {
       font-size: 12px;
       font-weight: bold;
     }
-    .detalle{
+    .detalle {
       color: #999;
       font-size: 11px;
     }
   }
+}
+.taskItem {
+  &:hover {
+    @include transition(all 0.3s 0.1s ease-out);
+    background: whitesmoke;
+  }
+}
+
+form {
+  //display: flex;
+  padding: 20px;
+}
+.modal-content {
+  background: #fff;
+  border-radius: 5px;
+  max-width: 450px;
+}
+.selectOpc {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }

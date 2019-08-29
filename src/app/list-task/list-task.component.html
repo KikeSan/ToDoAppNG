@@ -47,7 +47,7 @@
   <div class="modal-content">
     <form [formGroup]="group" (ngSubmit)="crearTask()">
       <h1 class="title is-4">Crear tarea</h1>
-      <button class="modal-close is-large" aria-label="close" (click)="cerrarModal('nuevaTareaModal')"></button>
+      <button type="button" class="modal-close is-large" aria-label="close" (click)="cerrarModal('nuevaTareaModal')"></button>
       <div class="field">
         <label class="label">Titulo</label>
         <p class="control has-icons-left">
@@ -81,7 +81,7 @@
         </p>
       </div>
       <div class="field">
-        <button class="button is-link is-small">Crear Tarea</button>
+        <button class="button is-link is-small" (click)="cerrarModal('nuevaTareaModal')">Crear Tarea</button>
       </div>
     </form>
   </div>

@@ -5,7 +5,7 @@
   Prueba
 </a> -->
 
-<div *ngFor="let tarea of listaTareas" class="panel-block">
+<div *ngFor="let tarea of listaTareas" class="panel-block taskItem">
   <div class="column is-1">
     <span class="icon is-medium is-left">
       <fa-icon icon="thumbtack" size="md"></fa-icon>
@@ -16,7 +16,7 @@
     <p class="detalle">{{tarea.description}}</p>
   </div>
   <div class="column is-2">
-    <a href="">
+    <a (click)="abrirModal('editTareaModal')">
       <span class="icon is-medium is-left">
         <fa-icon icon="edit" size="md"></fa-icon>
       </span>
@@ -27,4 +27,45 @@
       </span>
     </a>
   </div>
+</div>
+
+
+<div class="modal" id="editTareaModal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <form [formGroup]="group" (ngSubmit)="editarTask()">
+      <h1 class="title is-4">Editar tarea</h1>
+      <div class="field selectOpc">
+        <div class="control">
+          <div class="select is-info">
+            <select class="form-control" #t (change)="callType(t.value)">
+              <option *ngFor="let type of types" [value]="type">{{type}}</option>
+              <!-- <option>Todo</option>
+              <option>Doing</option>
+              <option>Complete</option> -->
+            </select>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="modal-close is-large" aria-label="close" (click)="cerrarModal('editTareaModal')"></button>
+      <div class="field">
+        <label class="label">Titulo</label>
+        <p class="control has-icons-left">
+          <input class="input is-small" type="text" placeholder="Ingresar tarea nueva" formControlName="titulo" />
+          <fa-icon icon="plus-circle" size="md" class="icon is-small is-left"></fa-icon>
+        </p>
+      </div>
+      <div class="field">
+        <label class="label">Descripción</label>
+        <p class="control has-icons-left">
+          <input class="input is-small" type="text" placeholder="Ingresar descripción" formControlName="descripcion" />
+          <fa-icon icon="plus-circle" size="md" class="icon is-small is-left"></fa-icon>
+        </p>
+      </div>
+      <div class="field">
+        <button class="button is-link is-small" (click)="cerrarModal('editTareaModal')">Actualizar Tarea</button>
+      </div>
+    </form>
+  </div>
+
 </div>
