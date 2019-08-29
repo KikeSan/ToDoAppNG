@@ -30,7 +30,7 @@
       
       <div class="panel-block pfooter">
         <a class="button is-link is-fullwidth" (click)="abrirModal('nuevaTareaModal')">
-          <fa-icon icon="plus-circle" size="md" class="icon is-small is-left"></fa-icon>
+          <fa-icon [icon]="faPlusCircle" size="md" class="icon is-small is-left"></fa-icon>
           <span>Crear Tarea</span>
         </a>
         <!-- <button class="button is-link is-outlined is-fullwidth">
@@ -58,7 +58,7 @@
             formControlName="titulo"
           />
           <fa-icon
-            icon="plus-circle"
+            [icon]="faFile"
             size="md"
             class="icon is-small is-left"
           ></fa-icon>
@@ -74,7 +74,7 @@
             formControlName="descripcion"
           />
           <fa-icon
-            icon="plus-circle"
+            [icon]="faAlignLeft"
             size="md"
             class="icon is-small is-left"
           ></fa-icon>

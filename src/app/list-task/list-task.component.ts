@@ -4,12 +4,18 @@ import { ITask } from '../i-task';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
+import { faPlusCircle, faAlignLeft, faFile } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-list-task',
   templateUrl: './list-task.component.html',
   styleUrls: ['./list-task.component.scss']
 })
 export class ListTaskComponent implements OnInit {
+  faPlusCircle = faPlusCircle
+  faAlignLeft = faAlignLeft
+  faFile = faFile
+
   /* listaTareas:ITask[]*/
   Tareas: TaskService;
   group: FormGroup;
