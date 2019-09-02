@@ -4,13 +4,17 @@ import { ITask } from '../i-task';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
-import { faFile, faThumbtack, faPlusCircle, faEdit, faTrashAlt, faAlignLeft } from '@fortawesome/free-solid-svg-icons';
+import { faFile, faThumbtack, faPlusCircle, faEdit, faTrashAlt, faAlignLeft, faInbox } from '@fortawesome/free-solid-svg-icons';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.scss']
 })
+
+
+
 export class TasksComponent implements OnInit {
   faEdit = faEdit
   faTrashAlt = faTrashAlt
@@ -18,6 +22,7 @@ export class TasksComponent implements OnInit {
   faPlusCircle = faPlusCircle
   faFile = faFile
   faAlignLeft = faAlignLeft
+  faInbox = faInbox
 
   listaTareas: ITask[];
   Tareas: TaskService;
@@ -25,6 +30,13 @@ export class TasksComponent implements OnInit {
   types: string[] = ['todo', 'doing','complete'];
   currentType:string
   IDtaskModal
+
+  emptyTasks = true
+
+  /* OBS = new Observable((observer) => {
+    observer.next(JSON.parse(localStorage.getItem('emptyData')))
+  })
+  OBS.subscribe(x=> console.log(x)) */
 
   constructor(task: TaskService, private activatedRouter: ActivatedRoute, private fb: FormBuilder) {
     this.Tareas = task;
@@ -46,9 +58,20 @@ export class TasksComponent implements OnInit {
     /* this.group = this.fb.group({
       selectType: ['todo']
     }) */
-    
-    this.listar(window.location.pathname.replace('/tareas/', ''));
+    //this.listar(window.location.pathname.replace('/tareas/', ''))
+    this.Tareas.OBSERVALO.subscribe((data) => {
+      console.log('Observer:::>', data);
+
+      this.listaTareas = this.Tareas.mostrarTareas(window.location.pathname.replace('/tareas/', ''));
+    })
+
+    const OBS = new Observable((observer) => {
+      observer.next(JSON.parse(localStorage.getItem('emptyData')))
+    })
+    OBS.subscribe(x => console.log(x))
   }
+
+  
 
   editModal(opc) {
     let element = document.getElementById('editTareaModal');
@@ -81,9 +104,12 @@ export class TasksComponent implements OnInit {
   }
 
   listar(estado) {
+    
     this.listaTareas = this.Tareas.mostrarTareas(estado);
+    //this.listaTareas = JSON.parse(localStorage.getItem('dataBD'))
     console.log('Retorno:: ', this.listaTareas);
   }
+  
   callType(value) {
     console.log('[CALLTYPE]',value);
     this.currentType = value;

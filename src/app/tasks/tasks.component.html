@@ -5,6 +5,13 @@
   Prueba
 </a> -->
 
+<div *ngIf="emptyTasks" class="emptyData">
+  <span class="icon is-large is-center">
+    <fa-icon [icon]="faInbox" size="md"></fa-icon>
+  </span>
+  <p>No hay tareas</p>
+</div>
+
 <div *ngFor="let tarea of listaTareas" class="panel-block taskItem">
   <div class="column is-1">
     <span class="icon is-medium is-left">

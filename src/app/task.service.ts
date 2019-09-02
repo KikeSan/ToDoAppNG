@@ -1,11 +1,19 @@
 import { ITask } from './i-task';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class TaskService {
+  OBSERVALO = new Observable((observer)=>{
+    observer.next(
+      JSON.parse(localStorage.getItem('dataBD'))
+      /* console.log('[Observer]',JSON.parse(localStorage.getItem('dataBD'))) */
+    )
+  })
   private tareas: ITask[] = [
-    {
+    /* {
       id: 123456,
       name: 'Rutas',
       description: 'detalle de la tarea',
@@ -28,58 +36,78 @@ export class TaskService {
       name: 'Formularios',
       description: 'detalle de la tarea',
       state: 'complete'
-    }
+    } */
   ];
-  constructor() {}
+  constructor() {
+    //localStorage.setItem('dataBD',[])
+    if (!localStorage.getItem('dataBD')){
+      localStorage.setItem('dataBD', JSON.stringify([]));
+    }
+  }
   mostrarTareas(opc) {
     console.log('OPCION->', opc);
-    let returnArray;
+    let data
+    let returnArray
 
     switch (opc) {
       case '/':
-        return this.tareas;
+        return data;
         break;
       case 'all':
-        return this.tareas;
+        //return this.tareas;
+        returnArray = JSON.parse(localStorage.getItem('dataBD'));
         break;
       case 'todo':
-        returnArray = this.tareas.filter(tarea => {
-          return tarea.state === opc;
+        //console.warn('DATA-> ',data);
+        data = JSON.parse(localStorage.getItem('dataBD'));
+        returnArray = data.filter((tarea, index) => {
+          console.warn('TAREA-> ', tarea.status);
+          return tarea.status === opc;
         });
         break;
       case 'doing':
-        returnArray = this.tareas.filter(tarea => {
-          return tarea.state === opc;
+        data = JSON.parse(localStorage.getItem('dataBD'));
+        returnArray = data.filter(tarea => {
+          return tarea.status === opc;
         });
         break;
       case 'complete':
-        returnArray = this.tareas.filter(tarea => {
-          return tarea.state === opc;
+        data = JSON.parse(localStorage.getItem('dataBD'));
+        returnArray = data.filter(tarea => {
+          return tarea.status === opc;
         });
         break;
 
       default:
         break;
     }
-    console.log('Listar tareas ', opc, ' -> ', this.tareas);
+    console.log('Listar tareas ', opc, ' -> ', returnArray);
     return Object.assign([], returnArray);
     //return Object.assign([],this.tareas)
   }
 
   agregarTarea(task) {
-    this.tareas.push(task);
+    console.log('TAREAS ACTUALES', JSON.parse(localStorage.getItem('dataBD')));
+    let temp = JSON.parse(localStorage.getItem('dataBD'));
+
+    temp.push(task);
+    localStorage.setItem('dataBD', JSON.stringify(temp));
+    //this.mostrarTareas(location.pathname.replace('/tareas/', ''))
+    localStorage.setItem('emptyData','false')
   }
 
   filtrarTarea(id) {
-    return this.tareas.filter(tarea => {
+    let temp = JSON.parse(localStorage.getItem('dataBD'));
+    return temp.filter(tarea => {
       return tarea.id === id;
     });
   }
 
   updateTarea(taskUpd) {
+    let temp = JSON.parse(localStorage.getItem('dataBD'));
     console.log('<Update> ', taskUpd);
 
-    this.tareas.map(tarea => {
+    temp.map(tarea => {
       console.warn('tarea: ', tarea.id + ' -> ' + taskUpd.id);
 
       if (tarea.id === taskUpd.id) {
@@ -89,6 +117,8 @@ export class TaskService {
       }
     });
 
-    return this.tareas;
+    //return this.tareas;
+    return temp;
   }
+
 }

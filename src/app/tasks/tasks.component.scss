@@ -35,3 +35,16 @@ form {
   top: 20px;
   right: 20px;
 }
+
+.emptyData{
+  background: #fff;
+  text-align: center;
+  padding: 30px;
+  color: #999;
+  fa-icon{
+    font-size: 40px;
+  }
+  p{
+    margin: 0;
+  }
+}

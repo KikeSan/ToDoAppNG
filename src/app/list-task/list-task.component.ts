@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { TaskService } from '../task.service';
-import { ITask } from '../i-task';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { faPlusCircle, faAlignLeft, faFile } from '@fortawesome/free-solid-svg-icons';
+
+import * as _ from 'lodash'
 
 @Component({
   selector: 'app-list-task',
@@ -54,8 +55,10 @@ export class ListTaskComponent implements OnInit {
       name: this.group.value.titulo,
       description: this.group.value.descripcion
     });
+    console.log('UNIQUE_ID---', _.uniqueId('000'));
+    
     this.Tareas.agregarTarea({
-      id: 34567,
+      id: +_.uniqueId('000'),
       name: this.group.value.titulo,
       description: this.group.value.descripcion,
       status: 'todo'
