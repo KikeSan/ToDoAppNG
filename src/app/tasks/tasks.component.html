@@ -12,7 +12,7 @@
   <p>No hay tareas</p>
 </div>
 
-<div *ngFor="let tarea of listaTareas" class="panel-block taskItem">
+<div *ngFor="let tarea of listaTareas" class="panel-block taskItem" id="taskItem">
   <div class="column is-1">
     <span class="icon is-medium is-left">
       <fa-icon [icon]="faThumbtack" size="md"></fa-icon>
@@ -30,7 +30,7 @@
         <fa-icon [icon]="faEdit" size="md"></fa-icon>
       </span>
     </a>
-    <a href="">
+    <a (click)="removeTask($event)" id={{tarea.id}}>
       <span class="icon is-medium is-left">
         <fa-icon [icon]="faTrashAlt" size="md"></fa-icon>
       </span>

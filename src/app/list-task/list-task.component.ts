@@ -58,7 +58,7 @@ export class ListTaskComponent implements OnInit {
     console.log('UNIQUE_ID---', _.uniqueId('000'));
     
     this.Tareas.agregarTarea({
-      id: +_.uniqueId('000'),
+      id: _.uniqueId('000'),
       name: this.group.value.titulo,
       description: this.group.value.descripcion,
       status: 'todo'

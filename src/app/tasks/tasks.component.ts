@@ -58,23 +58,16 @@ export class TasksComponent implements OnInit {
     /* this.group = this.fb.group({
       selectType: ['todo']
     }) */
-    //this.listar(window.location.pathname.replace('/tareas/', ''))
-    this.Tareas.OBSERVALO.subscribe((data) => {
-      console.log('Observer:::>', data);
-
-      this.listaTareas = this.Tareas.mostrarTareas(window.location.pathname.replace('/tareas/', ''));
-    })
-
-    const OBS = new Observable((observer) => {
-      observer.next(JSON.parse(localStorage.getItem('emptyData')))
-    })
-    OBS.subscribe(x => console.log(x))
+    this.listar(window.location.pathname.replace('/tareas/', ''))
+    
+    
   }
 
   
 
   editModal(opc) {
     let element = document.getElementById('editTareaModal');
+    
     element.classList.add('modal', 'is-active');
 
     console.log('[ID] ', opc.currentTarget.id);
@@ -104,7 +97,6 @@ export class TasksComponent implements OnInit {
   }
 
   listar(estado) {
-    
     this.listaTareas = this.Tareas.mostrarTareas(estado);
     //this.listaTareas = JSON.parse(localStorage.getItem('dataBD'))
     console.log('Retorno:: ', this.listaTareas);
@@ -125,5 +117,10 @@ export class TasksComponent implements OnInit {
     this.listaTareas = this.Tareas.updateTarea(arrMod)
     console.log('RESULTADO ACTUALIZADO', this.listaTareas);
     
+  }
+  removeTask(e){
+    console.log('ELIMINAR-',e.currentTarget.id);
+    
+    this.listaTareas = this.Tareas.deleteTask(e.currentTarget.id)
   }
 }

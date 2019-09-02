@@ -1,6 +1,8 @@
 import { ITask } from './i-task';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import * as _ from 'lodash'
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,9 +11,10 @@ export class TaskService {
   OBSERVALO = new Observable((observer)=>{
     observer.next(
       JSON.parse(localStorage.getItem('dataBD'))
-      /* console.log('[Observer]',JSON.parse(localStorage.getItem('dataBD'))) */
     )
   })
+
+  
   private tareas: ITask[] = [
     /* {
       id: 123456,
@@ -119,6 +122,20 @@ export class TaskService {
 
     //return this.tareas;
     return temp;
+  }
+
+  deleteTask(idT){
+    let temp = JSON.parse(localStorage.getItem('dataBD'))
+
+    let res = temp.filter(event=>{
+      console.log('_REMOVE:',event.id+' - '+idT);
+      
+      return event.id !=idT
+    })
+    console.log('RES===>', res);
+
+    localStorage.setItem('dataBD', JSON.stringify(res));
+    return res
   }
 
 }
