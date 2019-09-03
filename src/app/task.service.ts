@@ -8,12 +8,8 @@ import { connectableObservableDescriptor } from 'rxjs/internal/observable/Connec
 })
 
 export class TaskService {
-  OBSERVALO = new Observable((observer)=>{
-    observer.next(
-      JSON.parse(localStorage.getItem('dataBD'))
-    )
-  })
-
+  
+  OBSERVALO: Observable<any>
   
   private tareas: ITask[] = [
     /* {
@@ -47,6 +43,22 @@ export class TaskService {
       localStorage.setItem('dataBD', JSON.stringify([]));
     }
   }
+
+  ngOnInit() {
+    this.OBSERVALO = new Observable((observer) => {
+      observer.next(
+        JSON.parse(localStorage.getItem('dataBD'))
+      )
+    })
+
+    /* OBSERVALO.subscribe(
+      data=>{
+        console.log('DATA SUBSCRIBE: ',data);
+        
+      }
+    ) */
+  }
+
   mostrarTareas(opc) {
     console.log('OPCION->', opc);
     let data
@@ -100,7 +112,9 @@ export class TaskService {
   }
 
   filtrarTarea(id) {
+    
     let temp = JSON.parse(localStorage.getItem('dataBD'));
+    console.log('Filtrar Tarea: ',id, temp);
     return temp.filter(tarea => {
       return tarea.id === id;
     });
@@ -117,10 +131,12 @@ export class TaskService {
         console.warn('tarea: ', taskUpd);
         tarea.name = taskUpd.name;
         tarea.description = taskUpd.description;
+        tarea.status = taskUpd.status;
       }
     });
 
     //return this.tareas;
+    localStorage.setItem('dataBD', JSON.stringify(temp));
     return temp;
   }
 

@@ -62,7 +62,6 @@ export class TasksComponent implements OnInit {
     
     
   }
-
   
 
   editModal(opc) {
@@ -74,7 +73,7 @@ export class TasksComponent implements OnInit {
     console.log('[Name] ', this.Tareas.filtrarTarea(+opc.currentTarget.id));
     
     this.IDtaskModal = opc.currentTarget.id
-    let data:any = this.Tareas.filtrarTarea(+opc.currentTarget.id)
+    let data:any = this.Tareas.filtrarTarea(opc.currentTarget.id)
     console.log('DATA ',data);
     
     this.group.setValue({
@@ -99,7 +98,10 @@ export class TasksComponent implements OnInit {
   listar(estado) {
     this.listaTareas = this.Tareas.mostrarTareas(estado);
     //this.listaTareas = JSON.parse(localStorage.getItem('dataBD'))
-    console.log('Retorno:: ', this.listaTareas);
+    console.log('Retorno:: ', this.listaTareas.length)
+    if (this.listaTareas.length>0){
+      this.emptyTasks = false
+    }
   }
   
   callType(value) {
@@ -109,10 +111,10 @@ export class TasksComponent implements OnInit {
   updateTask(e){
     console.log('UPD:: ',this.group.value);
     let arrMod = {
-      id:+this.IDtaskModal,
+      id:this.IDtaskModal,
       name:this.group.value.titulo,
       description:this.group.value.descripcion,
-      
+      status: this.currentType
     }
     this.listaTareas = this.Tareas.updateTarea(arrMod)
     console.log('RESULTADO ACTUALIZADO', this.listaTareas);
@@ -122,5 +124,8 @@ export class TasksComponent implements OnInit {
     console.log('ELIMINAR-',e.currentTarget.id);
     
     this.listaTareas = this.Tareas.deleteTask(e.currentTarget.id)
+    if (this.listaTareas.length === 0) {
+      this.emptyTasks = true
+    }
   }
 }
