@@ -4,6 +4,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Créditos
 
-Kike Sanchez \n
-</> with ♥ and @angular\n
+Kike Sanchez  
+</> with ♥ and @angular  
 © 2019
