@@ -5,5 +5,5 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Créditos
 
 Kike Sanchez  
-</> with ♥ and @angular  
-© 2019
+<sub></> with ♥ and @angular </sub>  
+<sub>© 2019</sub>
