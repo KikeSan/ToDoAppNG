@@ -1,6 +1,6 @@
 import { ITask } from './i-task';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import * as _ from 'lodash'
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 @Injectable({
@@ -10,33 +10,9 @@ import { connectableObservableDescriptor } from 'rxjs/internal/observable/Connec
 export class TaskService {
   
   OBSERVALO: Observable<any>
+  onActualizar: Subject<any> = new Subject()
   
-  private tareas: ITask[] = [
-    /* {
-      id: 123456,
-      name: 'Rutas',
-      description: 'detalle de la tarea',
-      state: 'todo'
-    },
-    {
-      id: 987654,
-      name: 'Servicios',
-      description: 'detalle de la tarea',
-      state: 'todo'
-    },
-    {
-      id: 963587,
-      name: 'Input / Output',
-      description: 'detalle de la tarea',
-      state: 'doing'
-    },
-    {
-      id: 741852,
-      name: 'Formularios',
-      description: 'detalle de la tarea',
-      state: 'complete'
-    } */
-  ];
+  private tareas: ITask[] = [];
   constructor() {
     //localStorage.setItem('dataBD',[])
     if (!localStorage.getItem('dataBD')){

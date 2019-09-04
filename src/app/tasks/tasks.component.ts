@@ -60,6 +60,9 @@ export class TasksComponent implements OnInit {
     }) */
     this.listar(window.location.pathname.replace('/tareas/', ''))
     
+    this.Tareas.onActualizar.subscribe(
+      () => this.listar(window.location.pathname.replace('/tareas/', ''))
+    )
     
   }
   
